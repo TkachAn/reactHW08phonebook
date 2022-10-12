@@ -1,53 +1,40 @@
-import { useEffect, lazy } from 'react';
-import { useDispatch } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
-import { Layout } from './Layout';
-import { PrivateRoute } from './PrivateRoute';
-import { RestrictedRoute } from './RestrictedRoute';
-import { refreshUser } from 'redux/auth/operations';
-import { useAuth } from 'hooks';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import { tasksReducer } from './tasks/slice';
+import { authReducer } from './auth/slice';
 
-const HomePage = lazy(() => import('../pages/home'));
-const RegisterPage = lazy(() => import('../pages/register'));
-const LoginPage = lazy(() => import('../pages/login'));
-const TasksPage = lazy(() => import('../pages/contacts'));
+const middleware = [
+  ...getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }),
+];
 
-export const App = () => {
-  const dispatch = useDispatch();
-  const { isRefreshing } = useAuth();
-
-  useEffect(() => {
-    dispatch(refreshUser());
-  }, [dispatch]);
-
-  return isRefreshing ? (
-    <b>Refreshing user...</b>
-  ) : (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route
-          path="/register"
-          element={
-            <RestrictedRoute
-              redirectTo="/contacts"
-              component={<RegisterPage />}
-            />
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
-          }
-        />
-        <Route
-          path="/contacts"
-          element={
-            <PrivateRoute redirectTo="/login" component={<TasksPage />} />
-          }
-        />
-      </Route>
-    </Routes>
-  );
+// Persisting token field from auth slice to localstorage
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token'],
 };
+
+export const store = configureStore({
+  reducer: {
+    auth: persistReducer(authPersistConfig, authReducer),
+    tasks: tasksReducer,
+  },
+  middleware,
+  devTools: process.env.NODE_ENV === 'development',
+});
+
+export const persistor = persistStore(store);
