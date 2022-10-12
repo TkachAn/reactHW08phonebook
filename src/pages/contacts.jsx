@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import { fetchContacts } from 'redux/operations';
 import css from './App.module.css';
 
-export const App = () => {
+export const ContactsPage = () => {
   const dispatch = useDispatch();
   const { contacts, isLoading } = useSelector(selectContacts);
 
