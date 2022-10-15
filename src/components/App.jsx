@@ -1,11 +1,11 @@
 import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
-import { Layout } from './Layout';
-import { PrivateRoute } from './PrivateRoute';
-import { RestrictedRoute } from './RestrictedRoute';
-import { refreshUser } from 'redux/auth/operations';
-import { useAuth } from 'hooks';
+import Layout from './forPages/layout';
+import { PrivateRoute } from './forPages/PrivateRoute';
+import { RestrictedRoute } from './forPages/RestrictedRoute';
+import { refreshUser } from '../redux/auth/operations';
+import { useAuth } from '../hooks/useAuth';
 
 const HomePage = lazy(() => import('../pages/home'));
 const RegisterPage = lazy(() => import('../pages/register'));
@@ -47,6 +47,7 @@ export const App = () => {
             <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
           }
         />
+        <Route path="*" element={<HomePage />} />
       </Route>
     </Routes>
   );
