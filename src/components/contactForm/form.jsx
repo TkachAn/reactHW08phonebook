@@ -37,19 +37,14 @@ export function ContactForm() {
           <CssBaseline />
           <Box
             sx={{
-              marginTop: 8,
+              marginTop: 3,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
             }}
           >
-            <Box
-              component="form"
-              noValidate
-              onSubmit={handleSubmit}
-              sx={{ mt: 3 }}
-            >
-              <Grid container spacing={2}>
+            <Box component="form" noValidate onSubmit={handleSubmit}>
+              <Grid container spacing={2} xs="auto">
                 <Grid item xs={12} sm={6}>
                   <TextField
                     autoComplete="given-name"
@@ -77,7 +72,7 @@ export function ContactForm() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ mt: 1, mb: 2 }}
               >
                 Add contacts
               </Button>
@@ -85,39 +80,8 @@ export function ContactForm() {
           </Box>
         </Container>
       </ThemeProvider>
-      {/* <form className={css.form} onSubmit={handleSubmit}>
-        <div className={css.data}>
-          <label className={css.label}>
-            Name
-            <input
-              className={css.input}
-              type="text"
-              name="name"
-              placeholder="enter your name, please."
-              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              required
-            />
-          </label>
-          <label className={css.label}>
-            Phone number
-            <input
-              className={css.input}
-              type="tel"
-              name="phone"
-              placeholder="enter your phone number, please."
-              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-              required
-            />
-          </label>
-        </div>
-
-        <button className={css.btn} type="submit">
-          Add contact
-        </button>
-      </form> */}
     </>
   );
 }
 // maxWidth="xs"
+//sx={{ mt: 3 }}
