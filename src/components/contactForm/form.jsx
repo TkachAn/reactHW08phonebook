@@ -1,13 +1,12 @@
 import { addContact } from '../../redux/contacts/operations';
 import { useDispatch } from 'react-redux';
-import css from './form.module.css';
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
+// import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 const theme = createTheme();
@@ -34,7 +33,7 @@ export function ContactForm() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Container component="main" maxWidth="xs">
+        <Container component="main">
           <CssBaseline />
           <Box
             sx={{
@@ -51,7 +50,7 @@ export function ContactForm() {
               sx={{ mt: 3 }}
             >
               <Grid container spacing={2}>
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={6}>
                   <TextField
                     autoComplete="given-name"
                     name="name"
@@ -62,7 +61,7 @@ export function ContactForm() {
                     autoFocus
                   />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={6}>
                   <TextField
                     required
                     fullWidth
@@ -72,7 +71,6 @@ export function ContactForm() {
                     autoComplete="phone"
                   />
                 </Grid>
-
                 <Grid item xs={12}></Grid>
               </Grid>
               <Button
@@ -81,7 +79,7 @@ export function ContactForm() {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Sign Up
+                Add contacts
               </Button>
             </Box>
           </Box>
@@ -122,3 +120,4 @@ export function ContactForm() {
     </>
   );
 }
+// maxWidth="xs"
