@@ -4,6 +4,7 @@
   align-items: center;
   margin-bottom: 16px;
   border-bottom: 1px solid #2a363b;
+  color: #1976d2;
 }
 
 .link {
@@ -11,7 +12,8 @@
   text-decoration: none;
   padding: 12px;
   font-weight: 700;
-  color: #2a363b;
+  /* color: #2a363b; */
+  color: #1976d2;
 }
 
 .link.active {
