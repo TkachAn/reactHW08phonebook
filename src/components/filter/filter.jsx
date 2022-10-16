@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { setSearchValue } from 'redux/contacts/searchSlice';
-import css from './filter.module.css';
+// import css from './filter.module.css';
+import TextField from '@mui/material/TextField';
 export const Filter = () => {
   const dispatch = useDispatch();
   const handleSearch = e => {
@@ -8,9 +9,16 @@ export const Filter = () => {
   };
 
   return (
-    <label className={css.label}>
-      Find contacts by name
-      <input className={css.input} type="text" onChange={handleSearch} />
-    </label>
+    <TextField
+      variant="standard"
+      // autoComplete="given-name"
+      // name="find"
+      // required
+      id="outlined-search"
+      label="Find contacts by name"
+      // autoFocus
+      // type="search"
+      onChange={handleSearch}
+    />
   );
 };
