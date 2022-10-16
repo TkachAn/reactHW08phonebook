@@ -2,7 +2,7 @@ import Navigation from '../forPages/navigation';
 import { UserMenu } from '../forPages/userMenu';
 import { AuthNav } from '../forPages/authNav';
 import { useAuth } from '../../hooks/useAuth';
-import { AppBar } from '@mui/material';
+// import { AppBar } from '@mui/material';
 
 import css from './css.module.css';
 
