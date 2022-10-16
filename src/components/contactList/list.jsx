@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { selectSearch, selectContacts } from '../../redux/contacts/selectors';
 import { ContactItem } from './item';
-
+import Box from '@mui/material/Box';
 // const selectContacts = state => state.items;
 // const selectSearch = state => state.searchValue;
 
@@ -16,9 +16,18 @@ export const ContactList = () => {
   return (
     <>
       <ul>
-        {filteredContacts.map(({ id, name, number }) => {
-          return <ContactItem id={id} name={name} number={number} key={id} />;
-        })}
+        <Box
+          sx={{
+            margin: 'auto',
+
+            justifyContent: 'center',
+            maxWidth: 480,
+          }}
+        >
+          {filteredContacts.map(({ id, name, number }) => {
+            return <ContactItem id={id} name={name} number={number} key={id} />;
+          })}
+        </Box>
       </ul>
     </>
   );
