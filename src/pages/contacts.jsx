@@ -5,10 +5,12 @@ import { Filter } from '../components/filter/filter';
 import { selectContacts } from '../redux/contacts/selectors';
 import { useEffect } from 'react';
 import { fetchContacts } from '../redux/contacts/operations';
-// import css from '../components/App.module.css';
+
 import { Helmet } from 'react-helmet';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+
 const theme = createTheme({
   typography: {
     h4: {
@@ -16,15 +18,18 @@ const theme = createTheme({
       fontWeight: '700',
       textAlign: 'center',
     },
-    // Disable h3 variant
-    // h1: undefined,
+    h6: {
+      color: '#1976d2',
+      fontWeight: '700',
+      textAlign: 'center',
+    },
   },
 });
 export default function ContactsPage() {
   const dispatch = useDispatch();
 
   const { contacts, isLoading } = useSelector(selectContacts);
-  // console.log({ contacts, isLoading });
+
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
@@ -39,9 +44,13 @@ export default function ContactsPage() {
           Phonebook
         </Typography>
         <ContactForm />
-        <h2>Contacts</h2>
-        {Number(contacts.length) > 1 && <Filter />}
 
+        <Typography component="h1" variant="h6">
+          Contact list
+        </Typography>
+        <Box sx={{ textAlign: 'center' }}>
+          {Number(contacts.length) > 1 && <Filter />}
+        </Box>
         {isLoading && <p>Loading contacts...</p>}
         {contacts.length > 0 ? (
           <ContactList />
@@ -55,3 +64,7 @@ export default function ContactsPage() {
 //contacts={contacts}
 // export default ContactsPage;
 // className={css.container}
+// sx={{ display: flexbox, textAlign: 'center' }}
+//style : {position="fixed"}static
+//position="bottom"
+//sx={{
