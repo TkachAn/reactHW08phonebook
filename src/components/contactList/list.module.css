@@ -1,16 +1,16 @@
-.list {
+/* .list {
   margin: 20px 10px 0;
-}
-.item {
+} */
+/* .item {
   text-align: left;
   padding-top: 10px;
   font-size: 20px;
-}
-.info {
+} */
+/* .info {
   display: flex;
   justify-content: space-between;
-}
-.btn {
+} */
+/* .btn {
   border-radius: 50%;
   border: none;
   outline: none;
@@ -18,12 +18,12 @@
   color: red;
   background-color: transparent;
   font-weight: 900;
-  /* font-size: 16px; */
+ 
   text-transform: uppercase;
   transition: background-color 0.5s, transform 0.5s;
-}
-
+} */
+/* 
 .btn:hover {
   color: white;
   background-color: red;
-}
+} */
